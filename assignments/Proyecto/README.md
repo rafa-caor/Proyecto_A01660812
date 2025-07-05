@@ -7,3 +7,17 @@ La carpeta contiene el código fuente y el archivo de construcción ```make```.
 La carpeta `build` contiene el codigo binario generado por el archivo de construcción ```make```.
 
 Consulta el archivo assignments/README.md para instrucciones sobre la compilación y ejecución del proyecto.
+
+classDiagram
+    class Unidad {
+        -int vida
+        -int salud
+        -int ataque
+        -int nivel
+        -std::string nombre
+        +int porcentajeSalud()
+        +void imprimeBarra()
+        +void recibeAtaque(int)
+        +void atacar(Unidad& objetivo)
+        +void imprimir()
+    }
