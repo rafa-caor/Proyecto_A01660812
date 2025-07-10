@@ -16,8 +16,11 @@ private:
 public:
     combatUnit();
     combatUnit(std::string name, int maxHP, int atk, int lvl);
+
+    std::string type;
     
     std::string getName() const;
+    std::string getType() const;
     int getMaxHP() const;
     int getCurrentHP() const;
     int getAtk() const;

@@ -32,18 +32,21 @@ int combatUnit::getLvl() const {
 }
 void combatUnit::setMaxHP(int maxHP) {
     if(maxHP > 0) {maxHP = maxHP;}
+    else {maxHP = 100;}
     if(currentHP > maxHP) {currentHP = maxHP;}
 }
 void combatUnit::setCurrentHP(int currentHP) {
-    if(currentHP > 0 && currentHP <= maxHP) {currentHP = currentHP;}
-    else if(currentHP <= 0) {currentHP = 0;}
-    else {currentHP = maxHP;}
+    if(currentHP < 0) {currentHP = 0;}
+    else if(currentHP > maxHP) {currentHP = maxHP;}
+    else {currentHP = currentHP;}
 }
 void combatUnit::setAtk(int atk) {
     if(atk > 0) {atk = atk;}
+    else {atk = 20;}
 }
 void combatUnit::setLvl(int lvl) {
     if(lvl > 0) {lvl = lvl;}
+    else {lvl = 1;}
 }
 
 // Métodos
