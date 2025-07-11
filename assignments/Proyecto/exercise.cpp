@@ -71,6 +71,6 @@ int main(){
   defArcher.print();
   wiz1.print();
   defWizard.print();
-
+  
   return 0;
 }

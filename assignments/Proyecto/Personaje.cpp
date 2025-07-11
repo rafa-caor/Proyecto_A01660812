@@ -18,6 +18,9 @@ combatUnit::combatUnit(std::string name, int maxHP, int atk, int lvl)
 std::string combatUnit::getName() const {
     return name;
 }
+std::string combatUnit::getType() const {
+    return type;
+}
 int combatUnit::getMaxHP() const {
     return maxHP;
 }
@@ -81,7 +84,6 @@ void combatUnit::attack(combatUnit& target) {
     std::cout << name << " dealed " << dmg << " damage to " << target.name << "\n";
 }
 void combatUnit::print() const {
-
     std::cout << "\n=== " << name << " ===\n";
     std::cout << "Level: " << lvl << "\n";
     std::cout << "Attack: " << atk << "\n";
