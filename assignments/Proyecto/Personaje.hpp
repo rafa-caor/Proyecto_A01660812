@@ -1,9 +1,11 @@
-// Crear el archivo header de la clase Personaje, no olvides las guardas o el pragma.
 #pragma once
 #include <iostream>
 #include <string>
 
 class combatUnit {
+
+friend std::ostream& operator<<(std::ostream& os, const combatUnit& unit);
+
 private:
     int maxHP;
     int currentHP;
@@ -29,7 +31,7 @@ public:
     void setCurrentHP(int currentHP);
     void setAtk(int atk);
     void setLvl(int lvl);
-    
+    virtual bool isAlive() = 0;
     int percentHP() const;
     void printBarHP() const;
     void takeDamage(int damage);

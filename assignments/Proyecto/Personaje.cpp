@@ -5,6 +5,16 @@
 #include <cstdlib>
 #include <ctime>
 
+std::ostream& operator<<(std::ostream& os, const combatUnit& unit) {
+    os << "\n=== " << unit.name << " ===\n";
+    os << "Type: " << unit.type << "\n";
+    os << "Level: " << unit.lvl << "\n";
+    os << "Attack: " << unit.atk << "\n";
+    os << "HP: " << unit.currentHP << "/" << unit.maxHP << "\n";
+    unit.printBarHP();
+    return os;
+}
+
 // Constructores
 int combatUnit::unitCounter = 0;
 

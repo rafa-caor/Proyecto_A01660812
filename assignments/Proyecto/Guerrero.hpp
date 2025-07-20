@@ -13,6 +13,8 @@ public:
     warrior(std::string name, int maxHP, int atk, int lvl, int rage);
     int getRage() const;
     void setRage(int rage);
+    void takeDamage(int damage);
     void attack(combatUnit& target);
+    bool isAlive() override;
     void print() const;
 }; 

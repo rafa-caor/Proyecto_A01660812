@@ -24,29 +24,34 @@ std::string wizard::getMana() const {
 }
 void wizard::setMaxMana(int maxMana) {
     if (maxMana >= 0) {
-        maxMana = maxMana;
+        this -> maxMana = maxMana;
     } else {
-        maxMana = 0;
+        this -> maxMana = 0;
     }
 }
 void wizard::setCurrentMana(int currentMana) {
     if (currentMana < 0) {
         currentMana = 0;
     } else if (currentMana > maxMana) {
-        currentMana = maxMana;
+        this -> currentMana = maxMana;
     } else {
-        currentMana = currentMana;
+        this -> currentMana = currentMana;
     }
 }
 void wizard::takeDamage(int damage) {
-    int heal = 0;
     combatUnit::takeDamage(damage);
-    if (currentMana > 0 && percentHP() < 50 && percentHP() > 0) {
-        heal = currentMana / 10;
-        currentMana -= heal;
+    if (getCurrentMana() > 0 && percentHP() < 50 && percentHP() > 0) {
+        int heal = currentMana / 10;
+        setCurrentHP(getCurrentHP() + heal);
+        setCurrentMana(currentMana -= heal);
         std::cout << getName() << " uses healing and restores HP by " << heal << "!\n";}
     else if (currentMana == 0 && percentHP() > 0 && percentHP() < 50) {
         std::cout << getName() << " has no mana left to heal!\n";
+    }
+    if (!isAlive()) {
+        std::cout << getName() << " has fallen in battle!\n";
+    } else {
+        std::cout << getName() << " is still standing strong with " << getCurrentHP() << " HP and " << getCurrentMana() << " mana left!\n";
     }
 }
 void wizard::attack(combatUnit& target) {
@@ -85,6 +90,20 @@ void wizard::printBarMana() const {
         std::cout << "-";
     }
     std::cout << "] " << percentMana() << "% Mana\n";
+}
+bool wizard::isAlive() {
+    if (getCurrentHP() > 0) return true;
+    if (currentMana >= 30) {
+        int newMana = currentMana - 30;
+        if(newMana < 0) newMana = 0;
+        setCurrentMana(newMana);
+        int newHP = getMaxHP() / 4;
+        setCurrentHP(newHP);
+        std::cout << getName() << " uses the last of their mana to revive themselves!\n";
+        std::cout << getName() << " has " << getCurrentHP() << " HP and " << getCurrentMana() << " mana left!\n";
+        return true;
+    }
+    return false;
 }
 void wizard::print() const {
     combatUnit::print();

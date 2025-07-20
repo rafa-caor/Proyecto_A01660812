@@ -18,9 +18,27 @@ int archer::getCrit() const{
 }
 void archer::setCrit(int crit) {
     if (crit >= 0) {
-        crit = crit;
+        this -> crit = crit;
     } else {
-        crit = 0;
+        this -> crit = 0;
+    }
+}
+void archer::takeDamage(int damage) {
+    if ((rand() % 100) < 15) {
+        std::cout << getName() << " dodges the attack and avoids taking damage!\n";
+    } else {
+        combatUnit::takeDamage(damage);
+        if (percentHP() < 20) {
+            int critBoost = 5 + (50 - percentHP()) / 10;
+            crit += critBoost;
+            std::cout << getName() << " is in danger! Critical chance increased by "
+                      << critBoost << "%!\n";
+        }
+    }
+    if (!isAlive()) {
+        std::cout << getName() << " has fallen in battle!\n";
+    } else {
+        std::cout << getName() << " is still standing strong with " << getCurrentHP() << " HP left!\n";
     }
 }
 void archer::attack(combatUnit& target) {
@@ -41,6 +59,9 @@ void archer::attack(combatUnit& target) {
         std::cout << getName() << " lands a shot and deals " << dmg << " damage to " <<target.getName() << "!\n";
         target.takeDamage(dmg);
     }
+}
+bool archer::isAlive() {
+    return getCurrentHP() > 0;
 }
 void archer::print() const {
     combatUnit::print();

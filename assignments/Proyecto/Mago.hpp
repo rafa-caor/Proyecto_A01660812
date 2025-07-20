@@ -21,5 +21,6 @@ public:
     void attack(combatUnit& target);
     int percentMana() const;
     void printBarMana() const;
+    bool isAlive() override;
     void print() const;
 }; 

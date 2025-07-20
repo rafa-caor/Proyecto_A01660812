@@ -13,6 +13,8 @@ public:
     archer(std::string name, int maxHP, int atk, int lvl, int crit);
     int getCrit() const;
     void setCrit(int crit);
+    void takeDamage(int damage);
     void attack(combatUnit& target);
+    bool isAlive() override;
     void print() const;
 }; 

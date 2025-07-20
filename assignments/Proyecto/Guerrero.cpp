@@ -18,9 +18,22 @@ int warrior::getRage() const {
 }
 void warrior::setRage(int rage) {
     if (rage >= 0) {
-        rage = rage;
+        this -> rage = rage;
     } else {
-        rage = 0;
+        this -> rage = 0;
+    }
+}
+void warrior::takeDamage(int damage) {
+    combatUnit::takeDamage(damage);
+    int rageGenerated = damage / 3;
+    if (rageGenerated > 0) {
+        rage += rageGenerated;
+        std::cout << getName() << " gains " << rageGenerated << " rage from the damage taken!\n";
+    }
+    if(!isAlive()) {
+        std::cout << getName() << " has fallen in battle!\n";
+    } else {
+        std::cout << getName() << " is still standing strong with " << getCurrentHP() << " HP left!\n";
     }
 }
 void warrior::attack(combatUnit& target) {
@@ -43,6 +56,9 @@ void warrior::attack(combatUnit& target) {
         std::cout << "Dealed " << dmg << " damage!\n";
         target.takeDamage(dmg);
     }
+}
+bool warrior::isAlive() {
+    return getCurrentHP() > 0;
 }
 void warrior::print() const {
     combatUnit::print();
