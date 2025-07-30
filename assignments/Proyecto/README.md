@@ -7,6 +7,7 @@
 
 # Diagrama UML del proyecto
 
+```mermaid
 classDiagram
     class combatUnit {
         <<abstract>>
@@ -40,6 +41,7 @@ classDiagram
     combatUnit <|-- warrior
     combatUnit <|-- archer
     combatUnit <|-- wizard
+```
 
 # Planteamiento del problema
 
