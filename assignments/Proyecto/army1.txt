@@ -1,0 +1,6 @@
+warrior RedBlade 200 40 6 20
+archer GreenArrow 180 35 5 50
+wizard BlueMage 160 30 4 100
+warrior IronFist 220 45 7 25
+archer ShadowStrike 170 38 5 55
+wizard StormCaller 150 32 4 110

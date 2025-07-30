@@ -1,0 +1,6 @@
+warrior DarkKnight 190 42 6 22
+archer SilverBow 185 36 5 52
+wizard FireWeaver 165 31 4 105
+warrior StoneGuard 210 43 7 23
+archer WindWalker 175 37 5 53
+wizard IceSage 155 33 4 108
